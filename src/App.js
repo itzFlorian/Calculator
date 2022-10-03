@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./components/styles/app.css"
+import ExpertMath from "./components/ExpertMath"
+import EasyMath from "./components/EasyMath"
+import {useState} from "react"
+import { Route, Routes, Link} from "react-router-dom"
 
 function App() {
+  const [output, setOutput] = useState(" ")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <nav>
+        <Link className="link" to="/">EASY MATH</Link>
+        <Link className="link" to="/expert">EXPERT MODE</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<EasyMath output={output} setOutput={setOutput}/>}/>
+        <Route path="/expert" element={<ExpertMath output={output} setOutput={setOutput}/>}/>
+      </Routes>
+    </>
+    
+    
+  )
 }
 
-export default App;
+export default App
