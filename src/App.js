@@ -1,25 +1,21 @@
+import OutputField from "./components/OutputField.js"
+import Buttons from "./components/ButtonGenerator.js";
 import "./components/styles/app.css"
-import ExpertMath from "./components/ExpertMath"
-import EasyMath from "./components/EasyMath"
-import {useState} from "react"
-import { Route, Routes, Link} from "react-router-dom"
+import { useState } from "react";
 
-function App() {
-  const [output, setOutput] = useState(" ")
+
+const App = () => {
+  const [output, setOutput] = useState("")
+
   return (
-    <>
-      <nav>
-        <Link className="link" to="/">EASY MATH</Link>
-        <Link className="link" to="/expert">EXPERT MODE</Link>
-      </nav>
-      <Routes>
-        <Route path="/" element={<EasyMath output={output} setOutput={setOutput}/>}/>
-        <Route path="/expert" element={<ExpertMath output={output} setOutput={setOutput}/>}/>
-      </Routes>
-    </>
-    
-    
-  )
-}
+    <div className="calc-container">
+      <h1>Calculator</h1>
+        <OutputField output={output} setOutput={setOutput}/>
+      <div >
+        <Buttons output={output} setOutput={setOutput}/> 
+      </div>
+    </div>
+  );
+};
 
-export default App
+export default App;
